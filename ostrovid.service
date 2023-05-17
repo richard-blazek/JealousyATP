@@ -1,0 +1,14 @@
+[Unit]
+Description=Daemon ostrovid from JealousyATP, collecting information about online statuses.
+After=network.target
+
+[Service]
+User=admin
+WorkingDirectory=/home/admin/JealousyATP
+ExecStart=/bin/sh -c '. /home/admin/JealousyATP/secrets.sh;/bin/python3 /home/admin/JealousyATP/ostrovid.py'
+ExecReload=/bin/kill -s HUP $MAINPID
+TimeoutStopSec=5
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

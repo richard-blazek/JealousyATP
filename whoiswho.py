@@ -8,4 +8,4 @@ if not td.authorize():
 contacts = {user['id']: user['last_name'] + ' ' + user['first_name'] for user in td.get_users(td.get_contacts())}
 
 with open('names.txt', mode = 'wb') as out:
-    out.write(json.dumps(contacts, ensure_ascii=False).encode())
+    out.write(json.dumps(contacts, ensure_ascii=False, indent='\t').encode())
